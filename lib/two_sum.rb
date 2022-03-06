@@ -2,20 +2,20 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  search = Hash.new
+  maps = {}
   nums.each_with_index do |num, index|
-    idx = search[target - num]
+    return [maps[num], idx] if maps.has_key?(num)
 
-    return [idx, index] if idx != nil
-    search[num] = index
+    maps[target - num] = idx
   end
+  []
 end
 
 def two_sum_v2(nums, target)
   nums.each_with_index do |num, idx|
-    nums.each_with_index do |num2, idx2|
-      next if idx2 <= idx
-      return [idx, idx2] if num + num2 == target
-    end
+    si = nums.index(target - num)
+
+    return [idx, si] if pi && pi != idx
   end
+  []
 end
